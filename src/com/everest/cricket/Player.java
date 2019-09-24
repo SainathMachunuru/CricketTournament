@@ -3,7 +3,7 @@ package com.everest.cricket;
 import java.util.Map;
 import java.util.Set;
 
-public class Player {
+public class Player implements PlayerDef {
 	private String name;
 	private int runs;
 	private int balls;
@@ -47,7 +47,7 @@ public class Player {
 	public void setGameProbability(Map<Integer, Integer> gameProbability) {
 		this.gameProbability = gameProbability;
 	}
-	
+	@Override
 	public int play() {
 		int size = this.getGameProbability().keySet().size();
 		int[] scores = new int[size];
@@ -60,6 +60,14 @@ public class Player {
 		}
 		return Util.getRandomScore(scores, probabilities);
 
+	}
+	@Override
+	public void updateScoreCard(int score){
+		int currentBalls = this.getBalls()+1;
+		int currentRuns = this.getRuns()+score;
+		this.setBalls(currentBalls);
+		this.setRuns(currentRuns);
+		
 	}
 
 }
