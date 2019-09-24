@@ -1,6 +1,7 @@
 package com.everest.cricket;
 
 import java.util.Map;
+import java.util.Set;
 
 public class Player {
 	private String name;
@@ -45,6 +46,20 @@ public class Player {
 
 	public void setGameProbability(Map<Integer, Integer> gameProbability) {
 		this.gameProbability = gameProbability;
+	}
+	
+	public int play() {
+		int size = this.getGameProbability().keySet().size();
+		int[] scores = new int[size];
+		int[] probabilities = new int[size];
+		int i = 0;
+		for (int key : this.getGameProbability().keySet()) {
+			scores[i] = key;
+			probabilities[i] = this.getGameProbability().get(key);
+			i++;
+		}
+		return Util.getRandomScore(scores, probabilities);
+
 	}
 
 }
