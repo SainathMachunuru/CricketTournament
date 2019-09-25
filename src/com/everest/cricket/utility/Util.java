@@ -1,9 +1,15 @@
-package com.everest.cricket;
+package com.everest.cricket.utility;
 
 import java.util.Random;
-
+/**
+ * 
+ * @author msainath
+ * This is the Utility class for this game app
+ */
 public class Util {
-
+	/*
+	 * This method will return random score for player based on score-probability map
+	 */
 	public static int getRandomScore(int[] scores, int[] probabilities) {
 		int size = probabilities.length;
 		int probCumulative[] = new int[size];

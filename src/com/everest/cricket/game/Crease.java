@@ -1,5 +1,11 @@
-package com.everest.cricket;
+package com.everest.cricket.game;
 
+import com.everest.cricket.player.Player;
+
+/** 
+ * @author msainath
+ *  Description : This is the Crease class which reflects the crease in real cricket,which will have striker and non-striker of player type 
+ */
 public class Crease {
 	private Player striker;
 	private Player nonStriker;

@@ -1,13 +1,17 @@
-package com.everest.cricket;
+package com.everest.cricket.player;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * 
+ * @author msainath
+ *	description: This is the enum to define every player's score-probability cases.
+ */
 public enum PlayerEnum {
-	
+
 	KIRAT_BOILI(5, 30, 25, 10, 15, 1, 9, 5), 
 	NS_NODHI(10, 40, 20, 5, 10, 1, 4, 10), 
-	R_RUMRAH(20, 30, 15, 5, 5, 1, 4,20), 
+	R_RUMRAH(20, 30, 15, 5, 5, 1, 4,20),
 	SHASHI_HENRA(30, 25, 5, 0, 5, 1, 4, 30);
 
 	private int dotProbability;
@@ -64,7 +68,7 @@ public enum PlayerEnum {
 		return outProbability;
 	}
 
-	Map<Integer, Integer> buildPlayerScoreProbabilityMap() {
+	public Map<Integer, Integer> buildPlayerScoreProbabilityMap() {
 
 		Map<Integer, Integer> probMap = new HashMap<>();
 
