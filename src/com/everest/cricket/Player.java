@@ -9,7 +9,7 @@ public class Player implements PlayerDef {
 	private int balls;
 	private Map<Integer, Integer> gameProbability;
 	public boolean isOut;
-	public boolean isOnStrike;
+	public boolean isToYetBat = true;
 
 	public Player(String name, Map<Integer, Integer> gameProbability) {
 		this.name = name;
