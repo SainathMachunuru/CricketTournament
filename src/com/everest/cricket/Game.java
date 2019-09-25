@@ -35,41 +35,47 @@ public class Game {
 
 	private static void startGame() {
 		int noOfRunsRequired = GameConstants.NO_OF_RUNS_REQUIRED, noOfBallsLeft = GameConstants.NO_OF_BALLS_left;
-		int playerIndex = 2;
-		int wickets = 0;
+		int playerIndex = 2,wickets = 0,ballsOfOver = 0, overNumber = 0,noOfOversLeft = GameConstants.NO_OF_OVERS_LEFT;
 		gameService.displayWelcomeCommand();
+		gameService.displayMatchEquation(noOfOversLeft, noOfRunsRequired);
+		
 		while (noOfRunsRequired > 0 && noOfBallsLeft > 0 && wickets<GameConstants.NO_OF_WICKETS) {
 			currentPlayer = crease.getStriker();
 			int score = currentPlayer.play();
+			++ballsOfOver;
+			--noOfBallsLeft;
 			if (score == 2 || score == 4 || score == 6 || score == 0) {
-				System.out.println(currentPlayer.getName() + " scores " + score
-						+ " runs");
 				noOfRunsRequired -= score;
-				--noOfBallsLeft;
+				gameService.displayComment(currentPlayer,score,overNumber,ballsOfOver);
 				currentPlayer.updateScoreCard(score);
 				if (gameService.isOverCompleted(noOfBallsLeft)) {
 					gameService.changeStrike(crease, currentPlayer);
 					gameService.displayComment();
+					++overNumber;
+					ballsOfOver = 0;
+					--noOfOversLeft;
+					gameService.displayMatchEquation(noOfOversLeft, noOfRunsRequired);
 
 				}
 
 			} else if (score == 1 || score == 3 || score == 5) {
-				System.out.println(currentPlayer.getName() + " scores " + score
-						+ " runs");
 				noOfRunsRequired -= score;
-				--noOfBallsLeft;
+				gameService.displayComment(currentPlayer,score,overNumber,ballsOfOver);
 				currentPlayer.updateScoreCard(score);
 				gameService.changeStrike(crease, currentPlayer);
 				if (gameService.isOverCompleted(noOfBallsLeft)) {
 					currentPlayer = crease.getStriker();
 					gameService.changeStrike(crease, currentPlayer);
 					gameService.displayComment();
+					++overNumber;
+					ballsOfOver = 0;
+					--noOfOversLeft;
+					gameService.displayMatchEquation(noOfOversLeft, noOfRunsRequired);
 
 				}
 
 			} else {
-				System.out.println(currentPlayer.getName() + " got out");
-				--noOfBallsLeft;
+				gameService.displayComment(currentPlayer,score,overNumber,ballsOfOver);
 				++wickets;
 				currentPlayer.isOut = true;
 				if(wickets<GameConstants.NO_OF_WICKETS) {
@@ -84,6 +90,10 @@ public class Game {
 				if (gameService.isOverCompleted(noOfBallsLeft)) {
 					gameService.changeStrike(crease, currentPlayer);
 					gameService.displayComment();
+					++overNumber;
+					ballsOfOver = 0;
+					--noOfOversLeft;
+					gameService.displayMatchEquation(noOfOversLeft, noOfRunsRequired);
 
 				}
 				

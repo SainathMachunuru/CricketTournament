@@ -17,8 +17,14 @@ public class GameService implements GameServiceDef {
 	}
 
 	@Override
-	public void displayComment(Player player, int score) {
-		System.out.println(player.getName()+" scores "+score+" runs");
+	public void displayComment(Player player, int score, int overNumber, int ballsOfOver) {
+		if (score == -1) {
+			System.out.println(overNumber + "." + ballsOfOver + " " + player.getName() + " got out");
+
+		} else {
+			System.out.println(overNumber + "." + ballsOfOver + " " + player.getName() + " scores " + score + " runs");
+		}
+
 	}
 
 	@Override
@@ -69,6 +75,12 @@ public class GameService implements GameServiceDef {
 	public void displayWelcomeCommand() {
 		System.out.println("@@@@@@@@@@ FINAL T20 MATCH BENGALURU VS CHENNAI @@@@@@@@@@@\n");
 		
+		
+	}
+
+	@Override
+	public void displayMatchEquation(int noOfOVersLeft, int noOfRunsRequired) {
+		System.out.println(noOfOVersLeft+" overs left "+noOfRunsRequired+" runs to win");
 		
 	}
 
