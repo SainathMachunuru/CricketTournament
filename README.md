@@ -8,6 +8,7 @@ Make sure below things avialable before running this app
 
 ## How to run?
 Game.java is bootstrap file for this application.you can run that as "run as java application" as it is stand-alone app.
+if you have any problem with maven dependencies for running junit test cases you can still run main program without test cases.
 
 ## About Application.
 This app  will  decide whether the team  will win the match based equation(target runs,overs left,wickets left).
