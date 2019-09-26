@@ -6,7 +6,11 @@ import java.util.List;
 import com.everest.cricket.player.Player;
 import com.everest.cricket.player.PlayerEnum;
 import com.everest.cricket.player.PlayerService;
-
+/**
+ * 
+ * @author msainath
+ * This is the bootstrap class for this game application
+ */
 public class Game {
 	private static final List<Player> playersList = new ArrayList<>();
 	private static Crease crease;
@@ -46,7 +50,7 @@ public class Game {
 			int score = playerService.play(currentPlayer);
 			++ballsOfOver;
 			--noOfBallsLeft;
-			if (score == 2 || score == 4 || score == 6 || score == 0) {
+			if (score == 2 || score == 4 || score == 6 || score == 0) { 
 				noOfRunsRequired -= score;
 				gameService.displayComment(currentPlayer, score, overNumber, ballsOfOver);
 				playerService.updateScoreCard(score,currentPlayer);

@@ -17,43 +17,49 @@ import com.everest.cricket.player.PlayerEnum;
 public class GameServiceTest {
 	@InjectMocks
 	GameService gameService;
+
 	@Before
-    public void setUp() throws Exception {
-         MockitoAnnotations.initMocks(this);
-    }
+	public void setUp() throws Exception {
+		MockitoAnnotations.initMocks(this);
+	}
+
 	@Test
-	public void  shouldTestcheckForWinSuccess(){
+	public void shouldTestcheckForWinSuccess() {
 		int noOfRunsRequired = 0;
 		assertTrue(gameService.checkForWin(noOfRunsRequired));
-		
+
 	}
+
 	@Test
-	public void  shouldTestcheckForWinFailure(){
+	public void shouldTestcheckForWinFailure() {
 		int noOfRunsRequired = 20;
 		assertFalse(gameService.checkForWin(noOfRunsRequired));
-		
+
 	}
+
 	@Test
-	public void shouldTestIsOverCompletedSuccess(){
+	public void shouldTestIsOverCompletedSuccess() {
 		int noOfBalls = 12;
 		assertTrue(gameService.isOverCompleted(noOfBalls));
 	}
+
 	@Test
-	public void shouldTestIsOverCompletedFailure(){
+	public void shouldTestIsOverCompletedFailure() {
 		int noOfBalls = 10;
 		assertFalse(gameService.isOverCompleted(noOfBalls));
 	}
+
 	@Test
-	public void shouldChangeStrike(){
+	public void shouldChangeStrike() {
 		Player player1 = new Player("Kirat Boli", PlayerEnum.KIRAT_BOILI.buildPlayerScoreProbabilityMap());
 		Player player2 = new Player("N.S Nodhi", PlayerEnum.NS_NODHI.buildPlayerScoreProbabilityMap());
-		Crease crease = new Crease(player1,player2);
+		Crease crease = new Crease(player1, player2);
 		Player currentPlayer = player1;
 		gameService.changeStrike(crease, currentPlayer);
-		assertEquals(player2,crease.getStriker());
-		assertEquals(player1,crease.getNonStriker());
-		assertEquals("N.S Nodhi",crease.getStriker().getName());
-		assertEquals("Kirat Boli",crease.getNonStriker().getName());
+		assertEquals(player2, crease.getStriker());
+		assertEquals(player1, crease.getNonStriker());
+		assertEquals("N.S Nodhi", crease.getStriker().getName());
+		assertEquals("Kirat Boli", crease.getNonStriker().getName());
 	}
 
 }

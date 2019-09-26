@@ -51,14 +51,14 @@ public class GameService implements GameServiceDef {
 	// This method used display over break comment
 	@Override
 	public void displayComment() {
-		System.out.println("************ OVERR BREAK ***************\n");
+		System.out.println("************ OVER BREAK ***************\n");
 
 	}
 
 	// This method used to display over winning case comment
 	@Override
 	public void displayWinComment(int noOfRunsRequired, int noOfBallsLeft, int wickets) {
-		System.out.println(GameConstants.TEAM_NAME + " win by " + (GameConstants.NO_OF_WICKETS - wickets)
+		System.out.println(GameConstants.TEAM_NAME + " won by " + (GameConstants.NO_OF_WICKETS - wickets)
 				+ " wickets and " + noOfBallsLeft + " balls remaining\n");
 
 	}
