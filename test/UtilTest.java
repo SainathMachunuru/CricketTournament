@@ -1,4 +1,4 @@
-package com.everest.cricket.test;
+
 
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.junit.Assert.assertNotNull;

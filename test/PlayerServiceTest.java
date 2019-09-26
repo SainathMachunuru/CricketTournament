@@ -1,4 +1,4 @@
-package com.everest.cricket.test;
+
 
 import static org.junit.Assert.*;
 
