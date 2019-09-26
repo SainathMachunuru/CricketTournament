@@ -15,8 +15,17 @@ public class GameService implements GameServiceDef {
 	 * runs required to win otherwise gives false;
 	 */
 	@Override
-	public boolean checkForWin(int noOfRunsRequired) {
-		return noOfRunsRequired <= 0 ? true : false;
+	public void checkForWinAndDisplayResult(int noOfRunsRequired, int noOfBallsLeft, int wickets) {
+		if(noOfRunsRequired<=0) {
+			displayWinComment(noOfRunsRequired, noOfBallsLeft, wickets);
+			
+		}
+		else if(noOfRunsRequired == 1) {
+			displayDrawComment();
+		}
+		else {
+			displayLossComment(noOfRunsRequired);
+		}
 
 	}
 
@@ -50,24 +59,11 @@ public class GameService implements GameServiceDef {
 
 	// This method used display over break comment
 	@Override
-	public void displayComment() {
+	public void displayOverEndComment() {
 		System.out.println("************ OVER BREAK ***************\n");
 
 	}
 
-	// This method used to display over winning case comment
-	@Override
-	public void displayWinComment(int noOfRunsRequired, int noOfBallsLeft, int wickets) {
-		System.out.println(GameConstants.TEAM_NAME + " won by " + (GameConstants.NO_OF_WICKETS - wickets)
-				+ " wickets and " + noOfBallsLeft + " balls remaining\n");
-
-	}
-
-	// This method used to display over losing case comment
-	@Override
-	public void displayLossComment(int noOfRunsRequired) {
-		System.out.println(GameConstants.TEAM_NAME + " lost by " + noOfRunsRequired + " runs\n");
-	}
 
 	// This method used to display final score board
 	@Override
@@ -100,5 +96,20 @@ public class GameService implements GameServiceDef {
 		System.out.println(noOfOVersLeft + " overs left " + noOfRunsRequired + " runs to win");
 
 	}
+	// This method used to display over winning case comment
+	private void displayWinComment(int noOfRunsRequired, int noOfBallsLeft, int wickets) {
+		System.out.println(GameConstants.TEAM_NAME + " won by " + (GameConstants.NO_OF_WICKETS - wickets)
+				+ " wickets and " + noOfBallsLeft + " balls remaining\n");
+
+	}
+
+	// This method used to display game losing case comment
+	private void displayLossComment(int noOfRunsRequired) {
+		System.out.println(GameConstants.TEAM_NAME + " lost by " + (noOfRunsRequired-1) + " runs\n");
+	}
+	// This method used to display over draw case comment
+		private void displayDrawComment() {
+			System.out.println("The Match was TIE");
+		}
 
 }

@@ -24,20 +24,6 @@ public class GameServiceTest {
 	}
 
 	@Test
-	public void shouldTestcheckForWinSuccess() {
-		int noOfRunsRequired = 0;
-		assertTrue(gameService.checkForWin(noOfRunsRequired));
-
-	}
-
-	@Test
-	public void shouldTestcheckForWinFailure() {
-		int noOfRunsRequired = 20;
-		assertFalse(gameService.checkForWin(noOfRunsRequired));
-
-	}
-
-	@Test
 	public void shouldTestIsOverCompletedSuccess() {
 		int noOfBalls = 12;
 		assertTrue(gameService.isOverCompleted(noOfBalls));

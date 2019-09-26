@@ -35,7 +35,11 @@ public class PlayerService implements PlayerServiceDef {
 
 	public void updateScoreCard(int score, Player player) {
 		int currentBalls = player.getBalls() + 1;
-		int currentRuns = player.getRuns() + score;
+		int currentRuns = player.getRuns();
+		if (score != -1) {
+			currentRuns += score;
+		}
+
 		player.setBalls(currentBalls);
 		player.setRuns(currentRuns);
 
