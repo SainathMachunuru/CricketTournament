@@ -4,7 +4,7 @@
 Make sure below things avialable before running this app
 - Java 8
 - Eclipse IDE(you can use any other also)
-- Maven(optional. it can download dependencies from central repo anyway) for junit and mockito
+- Maven for junit and mockito
 
 ## How to run?
 Game.java is bootstrap file for this application.you can run that as "run as java application" as it is stand-alone app.
